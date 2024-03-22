@@ -142,3 +142,29 @@ file.java ->
         - 기계어가 실행되는 것보다 느림
     - JIT 컴파일 기법으로 살행 속도 개선
         - JIT 컴파일 : 실행 중에 바이트 코드를 기계어 코드로 컴파일하여 기계어를 실행하는 기법
+
+### 자바 프로그램의 기본 구조
+```java
+/*
+* 소스파일 : Hello.java
+*/
+public class Hello {
+
+    public static int sum(int n, int m) {
+        return n + m
+    }
+
+    // main() 메소드에서 실행 시작
+    public static void main(String[] args) {
+        int i = 20;
+        int s;
+        char a;
+
+        s = sum(i, 10); // sum() 메소드 호출
+        a = '?';
+        System.out.println(a); // 문자 '?' 화면 출력
+        System.out.println("Hello"); // "Hello" 문자열 화면 출력 
+        System.out.println(s);// 정수 s값 화면 출력
+    }
+}
+```
