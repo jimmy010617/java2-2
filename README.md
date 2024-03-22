@@ -62,10 +62,13 @@
 3. 자바 API(클래스 라이브러리)는 JDK에 패키지 형태로 제공됨
  - 필요한 클래스가 속한 패키지만 import하여 사용
 4. 개발자 자신의 패키지 생성 가능
-### 예시 코드
+### 코드 블럭
+```java
 public class Foo {
-    
+
     public static void main(String[] args) {
         System.out.println("Hello!!");
     }
 }
+```
+터미널에서 출력
