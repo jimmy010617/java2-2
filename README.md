@@ -154,7 +154,7 @@ else
     - 조건식이 '참'인 동안 반복 실행
 ```java
 int 1=0;
-while(1<10) {
+while(1<10) {   //1에서 9까지 의 합
     System.out.print(i);
     i++;
 }
