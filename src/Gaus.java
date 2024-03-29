@@ -10,5 +10,7 @@ public class Gaus {
 
         bar = ((foo + 1)*foo)/2;
         System.out.println(bar);
+
+        scanner.close();
     }
 }

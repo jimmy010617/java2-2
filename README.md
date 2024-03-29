@@ -149,6 +149,17 @@ else
 1. 자바 반복문 - for문, while문, do-while문
     - for문 : 가장 많이 사용하는 반복문
 
+### while문
+1. while 문의 구성과 코드 사례
+    - 조건식이 '참'인 동안 반복 실행
+```java
+int 1=0;
+while(1<10) {
+    System.out.print(i);
+    i++;
+}
+```
+
 
 ## 3월 22일
 1. 프로젝트 생성시 디랙토리 판별 및 주의
