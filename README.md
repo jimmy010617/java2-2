@@ -73,17 +73,21 @@ class StaticSample {
 ### static 멤버 사용
 1. 클래스 이름으로 접근 가능
 ```java
-StaticSample.m = 3;
-StaticSample.f();
+StaticSample.m = 3;     //클래스 이름으로 static필드 접근
+StaticSample.f();       //클래스 이름으로 static 메소드 호출
 ```
 2. 객체의 멤버로 접근 가능
 ```java
 StaticSample b1 = new StaticSample();
 
-b1.m = 3;
-b1.f();
+b1.m = 3;               //객체 이름으로 static 필드 접근
+b1.f();                 //객체 이름으로 static 메소드 호출
 ```
 3. non-static 멤버는 클래스 이름으로 접근 안됨
+```java
+StaticSample.n = 5;     //n은 non-static이므로 컴파일 오류
+StaticSample.g();       //g()는 non-static이므로 컴파일 오류
+```
 
 ### static의 활용
 
