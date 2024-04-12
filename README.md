@@ -35,6 +35,57 @@ class Local{///디폴트  클래스
 1. public 멤버
     - 패키지에 관계 없이 모든 클래스에게 접근 허용
 
+### static 멤버
+1. static 멤버 선언
+    - 멤버는 클래스당 하나 생성
+    - 클래스 로딩 시에 멤버 생성
+```java
+class StaticSample {
+    int n;                  //non-static 필드
+    void g() {...}          //non-static 메소드
+
+    static int m;           //static 필드
+    static void f() {...}   //static 메소드
+}
+```
+2. 객체 생성과 non-static 멤버의 생성
+    - non-static 멤버는 객체가 생성될 때, 객체마다 생긴다
+    - 멤버는 객체마다 별도 존재
+```java
+class A {
+    int n;
+    void g() {...}
+}
+```
+
+### static 멤버의 생성
+1. static 멤버는 클래스당 하나만 생성
+2. 객체들에 의해 공유됨
+```java
+class StaticSample {
+    int n;
+    void g() {...}
+    static int m;           //static 멤버 m과f()는 b1 객체가 생성되기 전에 존재
+    static void f() {...}
+}
+```
+
+### static 멤버 사용
+1. 클래스 이름으로 접근 가능
+```java
+StaticSample.m = 3;
+StaticSample.f();
+```
+2. 객체의 멤버로 접근 가능
+```java
+StaticSample b1 = new StaticSample();
+
+b1.m = 3;
+b1.f();
+```
+3. non-static 멤버는 클래스 이름으로 접근 안됨
+
+### static의 활용
 
 
 
