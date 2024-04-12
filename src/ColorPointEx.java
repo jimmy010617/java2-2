@@ -19,7 +19,7 @@ class ColorPoint extends Point {
         showPoint();
     }
 }
-public class ColorPoint {
+public class ColorPointEx {
     public static void main(String[] args) {
         Point p = new Point();
         p.set(1, 2);
