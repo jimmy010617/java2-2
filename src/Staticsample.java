@@ -5,7 +5,7 @@ public class Staticsample {
         System.out.println(foo);
         int bar = Calc.m;
         System.out.println(bar);
-        int foobar = a.m;
+        int foobar = a.n;
         System.out.println(foobar);
 
         System.out.println(Calc.abs(-5));

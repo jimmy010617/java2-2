@@ -89,7 +89,65 @@ StaticSample.n = 5;     //n은 non-static이므로 컴파일 오류
 StaticSample.g();       //g()는 non-static이므로 컴파일 오류
 ```
 
-### static의 활용
+### static 메소드의 제약 조건 1
+1. static 메소드는 오직 static 멤버만 접근 가능
+    - 객체가 생성되지 않은 상황에서도 static 메소드는 실행될 수 있기 때문에, non-static 멤버 활용 불가
+    - non-static 메소드는 static 멤버 사용 가능
+```java
+class StaticMethod {
+    int n;
+    void f1(int x) {n = x;}                 //정상
+    void f2(int x) {m = x;}                 //정상
+    static int m;
+    static void s1(int x) {n = x;}     //컴파일 오류, static 메소드는 non-static 필드 n 사용불가
+
+    static void s2(int x) {f1(3);} //컴파일 오류, static 메소드는 non-static 메소드 f1() 사용불가
+
+    static void s3(int x) {m = x;}  //정상, static 메소드는 static 필드 m 사용 가능
+    static void s4(int x) {s3(3);}  //정상, static 메소드는 static 메소드 s3() 호출 가능
+}
+```
+### static 메소드는 this 사용불가
+1. static 메소드는 객체 없이도 사용 가능하므로, this 레퍼런스를 사용할 수 없음
+```java
+static void f() { this.n = x; } //오류. static 메소드에서는 this 사용 불가능
+static void g() { this.m = x; } //오류. static 메소드에서는 this 사용 불가능
+```
+
+### final 클래스와 메소드
+1. final 클래스 - 더 이상 클래스 상속 불가능
+```java
+final class FinalClass {
+    ....
+} 
+class DerivedClass extends FinalClass{      //컴파일 오류
+    ....
+}
+```
+2. final 메소드 - 더 이상 오버라이딩 불가능
+```java
+public class SuperClass {
+    protected final int finalMethod() {...}
+}
+class SubClass extends SuperClass {
+    protected int finalMethod {...}     //컴파일 오류, 오버라이딩 할 수 없음
+}
+```
+
+### final 필드, 상수 선언
+1. 상수를 선언할 때 사용
+2. 상수 필드는 선언 시에 초기 값을 지정하여야 한다
+3. 상수 필드는 실행 중에 값을 변경할 수 없다
+
+## 5장
+### 상속
+1. 객체 지향 상속
+    - 부모의 유전자를 자식이 물려받는 유전적 상속과 동일
+
+
+
+
+
 
 
 
