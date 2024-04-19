@@ -206,7 +206,7 @@ public interface SerialDriver {...}
 ```java
 Point a = new Point(2,3);
 Point b = new Point(2,3);
-Point c
+Point c;
 
 if(a == b)  //false
     System.out.println("a == b");
