@@ -93,7 +93,56 @@ v.removeAllElements();          //모든 요소 삭제
 ### 컬렉션 생성문의 진화 : Java 7, Java 10
 1. Java 7 이후
     - 컴파일러의 타입 추론 기능 추가
-    - <> 다이아몬드 연산자에 타입 매개변수 생략
+    - <>(다이아몬드 연산자)에 타입 매개변수 생략
+
+### ArrayList < E >
+1. 가변 크기 배열을 구현한 클래스
+    - < E >에 요소로 사용할 특정 타입으로 구체화
+2. 벡터와 거의 동일
+    - 요소 삽입, 삭제, 검색 등 벡터 기능과 거의 동일
+    - 벡터와 달리 스레드 동기화 기능 없음
+        - 다수 스레드가 동시에 ArrayList에 접근할 때 동기화되지 않음. 개발자가 스레드 동기화 코드 작성
+
+### ArrayList < String > 컬렉션 활용 사례
+```java
+ArrayList<String> a = new ArrayList<String>(7); //ArrayList 생성
+```
+
+```java
+v.add("Hello");
+v.add("Hi");       //요소 삽입
+v.add("Java");  
+```
+
+```java
+int n = a.size();           //요소 개수 n
+int c = a.capacity();      //capacity() 메소드 없음
+```
+
+```java
+a.add(2, "Sahni");  //요소 중간 삽입
+```
+
+```java
+String str = a.get(1); //요소 알아내기
+```
+
+### 컬렉션의 순차 검색을 위한 Iterator
+1. Iterator < E > 인터페이스
+    - 리스트 구조의 컬렉션에서 요소의 순차 검색을 위한 인터페이스
+        - Vector < E >, ArrayList < E >, LinkedList < E >가 상속받는 인터페이스
+2. Iterator 객체 얻어내기
+    - 컬렉션의 iterator() 메소드 호출
+        - 해당 컬렉션을 순차 검색할 수 있는 Iterator 객체 리턴
+    - 컬렉션 검색 코드
+    ```java
+    while(it.hasNext()) {       //모든 요소 방문
+        int n = it.next();      //다음 요소 리턴
+        ...
+    }
+    ```
+
+###
 
 
 
