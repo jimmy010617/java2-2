@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Pizza {
     int radius;
     String name;
