@@ -142,9 +142,40 @@ String str = a.get(1); //요소 알아내기
     }
     ```
 
+### HashMap < K, V >
+1. 키(Key)와 값(Value)의 쌍으로 구성되는 요소를 다루는 컬렉션
+    - K : 키로 사용할 요소의 타입
+    - V : 값으로 사용할 요소의 타입
+    - 키와 값이 한 쌍으로 삽입
+    - '값'을 검색하기 위해서는 반드시 '키' 이용
+2. 삽입 및 검색이 빠른 특징
+    - 요소 삽입 : put() 메소드
+    - 요소 삽입 : get() 메소드
+
+### HashMap< String, String > 컬렉션 활용 사례
+```java
+HashMap<String, String> h = new HashMap<String, String>();      //해시맵 생성
+```
+
+```java
+h.put("baby", "아기");
+h.put("love", "사랑");          //(키, 값) 삽입
+h.put("apple", "사과");
+```
+
+```java
+String kor = h.get("love");     //키로 값 읽기
+```
+
+```java
+h.remove("apple");          //키로 요소 삭제
+```
+
+```java
+int n = h.size();           //요소 개수
+```
+
 ###
-
-
 
 
 
