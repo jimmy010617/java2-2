@@ -1,0 +1,25 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class FlowLayoutEx extends JFrame {
+    public FlowLayoutEx() {
+        setTitle("FlowLayout 예제");                    //프레임 타이틀 달기
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container contentPane = getContentPane();             //컨텐트팬 알아내기
+            
+        contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 40));              //컨텐트팬에 FlowLatout 배치관리자 달기
+
+        contentPane.add(new JButton("add"));              
+        contentPane.add(new JButton("Sub"));      
+        contentPane.add(new JButton("mul")); 
+        contentPane.add(new JButton("div")); 
+        contentPane.add(new JButton("Calculate"));         
+
+        setSize(300, 150);                       //프레임 크기 300x150 설정
+        setVisible(true);                                   //화면에 프레임 출력
+    }
+
+    public static void main(String[] args) {
+        new FlowLayoutEx();
+    }
+}
