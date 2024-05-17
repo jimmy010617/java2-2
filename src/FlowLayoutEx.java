@@ -9,10 +9,10 @@ public class FlowLayoutEx extends JFrame {
          
         //왼쪽 정렬로, 수평간격을 30, 수직 간격을 40 픽셀로 배치
         //FlowLayout 생성 
-        contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 30, 40));              //컨텐트팬에 FlowLatout 배치관리자 달기
+        contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 30, 40));              //컨텐트팬에 FlowLatout 배치관리자 달기
 
-        contentPane.add(new JButton("add"));              
-        contentPane.add(new JButton("Sub"));      
+        contentPane.add(new JButton("add-Calculate"));              
+        contentPane.add(new JButton("Sub-Calculate"));      
         contentPane.add(new JButton("mul")); 
         contentPane.add(new JButton("div")); 
         contentPane.add(new JButton("Calculate"));         

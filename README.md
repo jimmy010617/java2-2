@@ -56,10 +56,24 @@ c.setLayout(new FlowLayout());              //컨탠트팬에 FlowLayout 생성
         - hGap : 좌우 두 컴포넌트 사이의 수평 간격, 픽셀 단위. 디폴트는 5
         - vGap : 상하 두 컴포넌트 사이의 수직 간격, 픽셀 단위. 디폴트는 5
 
-### 스윙 응용프로그램의 종료
-1. 응용프로그램 내에서 스스로 종료하는 방법
-```java
+### BorderLayoyt 배치관리자
+1. 배치방법
+    - 컨테이너 공간을 5구역으로 분할, 배치
+        - 동, 서, 남, 북, 중앙
+    - 배치 방법
+        - add(Component comp, int index)
+            - comp를 index의 공간에 배치
 
+### BorederLayout 생성자와 add() 메소드
+1. 생성자
+    - BorderLayout()
+    - BorderLayout(int hGap, int vGap)
+
+### GridLayout 배치관리자
+1. 배치방법
+    - 컨테이너 공간을 동일한 사각형 격자(그리드)로 분할하고 각 셀에 컴포넌트 하나씩 배치
+        - 생성자에 행수와 열수 지정
+        - 세렝 왼쪽에서 오른쪽으로, 다시 위에서 아래로 순서대로 배치
 
 
 
