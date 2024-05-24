@@ -49,6 +49,49 @@
         - Object 타입으로 리턴하므로 캐스팅하여 사용
         - 모든 이벤트 객체에 대해 적용
 
+### 리스너 인터페이스
+1. 이벤트 리스너
+    - 이벤트를 처리하는 자바 프로그램 코드, 클래스로 작성
+2. 자바는 다양한 리스너 인터페이스 제공
+    - 예) ActionListener 인터페이스 - 버튼 클릭 이벤트를 처리하기 위한 인터페이스
+    - 예) MouseListener 인터페이스 - 마우스 조작에 따른 이벤트를 처리하기 위한 인터페이스
+3. 사용자의 이벤트 리스너 작성
+    - 자바의 리스너 인터페이스를 상속받아 구현
+    - 리스너 인터페이스의 모든 추상 메소드 구현
+
+### 이벤트 리스너 작성 과정 사례
+1. 이벤트와 이벤트 리스너 선택
+    - 버튼 클릭을 처리하고자 하는 경우
+        - 이벤트 : Action 이벤트, 이벤트 리스너 : ActionListener
+2. 이벤트 리스너 클래스 작성 : ActionListner 인터페이스 구현
+```java
+class MyActionListener implements ActionListener {
+    public void actionPerformed(ActionEvent e) {        //버튼이 클릭될 때 호출되는 메소드
+        JButton b = (JButton)e.getSource();             //사용자가 클릭한 버튼 알아내기
+        if(b.getText().equals("Action"))                //버튼의 문자열이 "Action"인지 비교
+            b.setText("액션");                          //JButton의 setText()호출문자열변경
+        else
+            b.setText("Action");                        //JButton의 setText()호출문자열변경
+    }
+}
+```
+3. 이벤트 리스너 등록
+    - 이벤트를 받아 처리하고자 하는 컴포넌트에 이벤트 리스너 등록
+    - comnponent.addXXXListener(listener)
+        - xxx : 이벤트 명, listener : 이벤트 리스너 객체
+
+### 이벤트 리스너 작성 방법
+1. 3가지 방법
+    - 독립 클래스로 작성
+        - 이벤트 리스너를 완전한 클래스로 작성
+        - 이벤트 리스너를 여러 곳에서 사용할 떄 적합
+    - 내부 클래스로 작성
+        - 클래스 안에 멤버처럼 클래스 작성
+        - 이벤트 리스너를 특정 클래스에서만 사용할 떄 적합
+    - 익명 클래스로 작성
+        - 클래스의 이름 없이 간단히 리스너 작성
+        - 클래스 조차 만들 필요 없이 리스너 코드가 간단한 경우에 적합
+
 ###
 
 
