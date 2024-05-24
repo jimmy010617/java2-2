@@ -150,7 +150,12 @@ component.requestFocus();       //component에 포커스 강제 지정
         - 입력된 키를 판별하기 위해 가상키값과 비교하여야함
         - 가상 키 가뵤은 KeyEvent클래스에 상수로 선언
 
-###
+### 마우스 리스너 달기와 MouseEvent객체 활용
+1. 마우스 리스너 달기
+    - 마우스 리스너는 컴포넌트에 다음과 같이 등록
+```java
+component.addMouseListener(myMouseListener)
+```
 
 
 ## 5월 17일
