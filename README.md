@@ -169,6 +169,21 @@ public class MenuEx extends JFrame {
     }
 }
 ```
+### 팝업 다이얼로그, JOptionPane
+1. 팝업 다이얼로그
+    - 사용자에게 메시지를 전달하거나 문자열을 간단히 입력받는 용도
+    - JOptionPane 클래스를 이용하여 생성
+        - static 타입의 간단한 메소드 이용
+2. 입력 다이얼로그 - JOptionPane.showInputDialog()
+
+### 확인 다이얼로그
+1. 확인 다이얼로그 - JOptionPane.showConfirmDialog()
+    - 사용자로부터 Yes/No 응답을 입력 받는 다이얼로그
+
+### 메시지 다이얼로그
+1. 메시지 다이얼로그 – showMessageDialog
+    - 단순 메시지를 출력하는 다이얼로그
+
 
 ## 5월 24일
 ## 9장 자바의 이벤트 처리
