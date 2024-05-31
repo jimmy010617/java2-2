@@ -52,6 +52,123 @@
     - Java 7부터 제네릭 리스트로 바뀜
         - < E >에 지정된 타입의 객체만 저장하는 리스트
 2. JScrollPane에 JList< E >를 삽입하여 스크롤 가능
+```java
+import javax.swing.*;
+import java.awt.*;
+public class ListEx extends JFrame {
+    private String [] fruits= {"apple", "banana", "kiwi", "mango",
+        "pear", "peach", "berry", "strawberry", "blackberry"};
+    private ImageIcon [] images = { new ImageIcon("images/icon1.png"),
+    new ImageIcon("images/icon2.png"),
+    new ImageIcon("images/icon3.png"),
+    new ImageIcon("images/icon4.png") };
+
+    public ListEx() {
+        setTitle("리스트 만들기 예제");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = getContentPane();
+        c.setLayout(new FlowLayout());
+
+        JList<String> strList = new JList<String>(fruits);
+        c.add(strList);
+
+        JList<ImageIcon> imageList = new JList<ImageIcon>();
+        imageList.setListData(images);
+        c.add(imageList);
+        
+        JList<String> scrollList = new JList<String>(fruits);
+        c.add(new JScrollPane(scrollList));
+
+        setSize(300,300); 
+        setVisible(true);
+    }
+    public static void main(String [] args) {
+        new ListEx();
+    }
+}
+```
+
+### JComboBox< E >
+1. JComboBox< E >
+    - 텍스트필드와 버튼, 그리고 드롭다운 리스트로 구성되는 콤보박스
+    - 드롭다운 리스트에서 선택한 것이 텍스트필드에 나타남
+```java
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+public class ComboActionEx extends JFrame {
+    private String [] fruits = {"apple", "banana", "mango"};
+    private ImageIcon [] images = { new ImageIcon("images/apple.jpg"),
+    new ImageIcon("images/banana.jpg"),
+    new ImageIcon("images/mango.jpg") };
+
+    private JLabel imgLabel = new JLabel(images[0]);
+        public ComboActionEx() {
+            setTitle("콤보박스 활용 예제");
+            Container c = getContentPane();
+            c.setLayout(new FlowLayout());
+
+            JComboBox<String> combo = new JComboBox<String>(fruits);
+
+            c.add(combo); 
+            c.add(imgLabel);
+            // 콤보박스에 Action 리스너 등록. 선택된 아이템의 이미지 출력
+            combo.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    JComboBox<String> cb = (JComboBox<String>)e.getSource();
+                    int index = cb.getSelectedIndex();
+                    imgLabel.setIcon(images[index]);
+                }   
+            });
+            setSize(300,250);
+            setVisible(true);
+        }
+    public static void main(String [] args) {
+        new ComboActionEx();
+    }
+}
+```
+### 메뉴 구성
+1. 메뉴 만들기에 필요한 스윙 컴포넌트
+    - 메뉴아이템 – JMenuItem
+    - 메뉴 – JMenu
+        - 여러 개의 메뉴 아이템을 가짐
+    - 메뉴바 – JMenuBar
+        - 여러 개의 메뉴를 붙이는 바이며, 프레임에 부착됨
+    - 분리선
+        - 메뉴아이템 사이의 분리선으로 separator라고 부름
+        - JMenu의 addSeparator()를 호출하여 삽입함
+```java
+import javax.swing.*;
+public class MenuEx extends JFrame {
+    public MenuEx() {
+        setTitle("Menu 만들기 예제");
+        createMenu(); // 메뉴 생성, 프레임에 삽입
+        setSize(250,200);
+        setVisible(true);
+    }
+    public void createMenu() {
+        JMenuBar mb = new JMenuBar();
+        JMenu screenMenu = new JMenu("Screen");
+
+        screenMenu.add(new JMenuItem("Load"));
+        screenMenu.add(new JMenuItem("Hide"));
+        screenMenu.add(new JMenuItem("ReShow"));
+        screenMenu.addSeparator();
+        screenMenu.add(new JMenuItem("Exit"));
+
+        mb.add(screenMenu);
+        mb.add(new JMenu("Edit"));
+        mb.add(new JMenu("Source"));
+        mb.add(new JMenu("Project"));
+        mb.add(new JMenu("Run"));
+        setJMenuBar(mb);
+    }
+    public static void main(String [] args) {
+        new MenuEx();
+    }
+}
+```
 
 ## 5월 24일
 ## 9장 자바의 이벤트 처리

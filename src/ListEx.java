@@ -16,9 +16,11 @@ public class ListEx extends JFrame {
 
         JList<String> strList = new JList<String>(fruits);
         c.add(strList);
+
         JList<ImageIcon> imageList = new JList<ImageIcon>();
         imageList.setListData(images);
         c.add(imageList);
+        
         JList<String> scrollList = new JList<String>(fruits);
         c.add(new JScrollPane(scrollList));
 
