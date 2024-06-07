@@ -173,6 +173,57 @@ TimerThread th = new TimerThread();
 th.start();
 ```
 
+### Runnable 인터페이스로 스레드 만들기
+1. Runnable 인터페이스 구현하는 새 클래스 작성
+    - run() 메소드 구현
+        - run() 메소드를 스레드 코드라고 부름
+        - run() 메소드에서 스레드 실행 시작
+2. 스레드 객체 생성
+3. 스레드 시작
+    - start() 메소드 호출
+        - 스레드로 작동 시작
+        - 스레드 객체의 run()이 비로소 실행
+        - JVM에 의해 스케쥴되기 시작함
+
+### main 스레드
+1. main 스레드
+    - JVM이 응용프로그램을 실행할 때 디폴트로 생성되는 스레드
+        - main() 메소드 실행 시작
+        - main() 메소드가 종료하면 main 스레드 종료
+
+### 스레드 종료와 타 스레드 강제 종료
+1. 스스로 종료
+    - run() 메소드 리턴
+2. 타 스레드에서 강제 종료
+    - interrupt() 메소드 사용
+```java
+public static void main(String [] args) {
+    TimerThread th = new TimerThread();
+    th.start();
+    th.interrupt(); // TimerThread 강제 종료
+}
+
+class TimerThread extends Thread {
+    int n = 0;
+    @Override
+    public void run() {
+        while(true) {
+        System.out.println(n); // 화면에 카운트 값 출력
+        n++;
+            try {
+                sleep(1000);
+            }
+            catch(InterruptedException e){
+                return; // 예외를 받고 스스로 리턴하여 종료
+            }
+        }
+    }
+}
+```
+
+
+
+
 
 ## 5월 31일
 ## 10장 스윙 컴포넌트 활용
