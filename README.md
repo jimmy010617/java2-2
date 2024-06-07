@@ -64,6 +64,28 @@ void drawString(String str, int x, int y)
     - 자바의 색 : r(Red), g(Green), b(Blue) 성분으로 구성, 각 성분은 0~255(8비트) 범위의 정수
         - 예) 빨간색 : new Color(255, 0, 0), 초록색 : new Color(0x0000ff00); 노란색 : Color.YELLOW
 
+## 도형 그리기와 칠하기
+1. 도형 그리기
+    - 선, 타원, 사각형, 둥근 모서리 사각형, 원호, 폐 다각형 그리기
+    - 선의 굵기 조절할 수 없음
+2. 도형 칠하기
+    - 도형을 그리고 내부를 칠하는 기능
+        - 도형의 외곽선과 내부를 따로 칠하는 기능 없음
+    - 도형 칠하기를 위한 메소드
+        - 그리기 메소드 명에서 draw 대신 fill로 이름 대치하면 됨. fillRect(), fillOval() 등
+
+## 스윙에서 이미지를 그리는 2 가지 방법
+1. JLabel을 이용한 이미지 그리기
+```java
+ImageIcon image = new ImageIcon("images/apple.jpg");
+    JLabel label = new JLabel(image);
+    panel.add(label);
+```
+    - 장점 : 이미지 그리기 간편 용이
+    - 단점 : 이미지의 원본 크기대로 그리므로 이미지 크기 조절 불가
+2. Graphics의 drawImage()로 이미지 출력
+    - 장점 : 이미지 일부분 등 이미지의 원본 크기와 다르게 그리기 가능
+    - 단점 : 컴포넌트로 관리할 수 없음, 이미지의 위치나 크기 등을 적절히 조절하는 코딩 필요
 
 
 ## 5월 31일
