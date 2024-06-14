@@ -74,7 +74,139 @@ int c = fin.read(); // IOException 발생 가능
 3. try-catch 블록 반드시 필요
     - 자바 컴파일러의 강제 사항
 
+### 문자 스트림으로 텍스트 파일 쓰기
+텍스트 파일에 쓰기 위해 문자 스트림 FileWriter 클래스 이용
+1. 파일 출력 스트림 생성(파일 열기)
+    - 스트림을 생성하고 파일을 열어 스트림과 연결
+```java
+FileWriter fout = new FileWriter("c:\\Temp\\test.txt");
+```
+2. 파일 쓰기
+    - write()로 문자 하나 씩 파일에 기록
+    - 블록 단위로 쓰기 가능
+```java
+fout.write('A'); // 문자 'A'를 파일에 기록
+char [] buf = new char [1024];
+//블록 단위로 사용 가능
+fout.write(buf, 0, buf.length); // buf[0]부터 버퍼 크기만큼 쓰기
+```
+3. 스트림 닫기
+    - close()로 스트림 닫기
+```java
+fout.close(); // 스트림 닫기. 더 이상 스트림에 기록할 수 없다.
+```
 
+### 바이트 스트림으로 바이너리 파일 쓰기
+1. 바이너리 값을 파일에 저장하기
+    - 프로그램 내의 변수, 배열, 버퍼에 든 바이너리 값을 파일에 그대로 기록
+        - FileOutputStream 클래스 이용
+2. 파일 출력 스트림 생성(파일 열기)
+    - 스트림을 생성하고 파일을 열어 스트림과 연결
+```java
+FileOutputStream fout = new FileOutputStream("c:\\Temp\\test.out");
+```
+3. 파일 쓰기
+    - write()로 문자 하나 씩 파일에 기록
+```java
+byte b[] = {7,51,3,4,-1,24};
+for(int i=0; i<b.length; i++) fout.write(b[i]); // 배열 b를 바이너리 그대로 기록
+```
+4. 스트림 닫기
+    - close()로 스트림 닫기
+
+### 바이트 스트림으로 바이너리 파일 읽기
+1. 바이너리 파일에서 읽기 위해 FileInputStream 클래스 이용
+2. 파일 입력 스트림 생성(파일 열기)
+    - 스트림을 생성하고 파일을 열어 스트림과 연결
+```java
+FileInputStream fin = new FileInputStream("c:\\Temp\\test.out");
+```
+3. 파일 읽기
+    - read()로 문자 하나 씩 파일에서 읽기
+    ```java
+    int n=0, c;
+    while((c = fin.read()) != -1) {
+        b[n] = (byte)c; // 읽은 바이트를 배열에 저장
+        n++;
+    }
+    ```
+    - 블록 단위로 읽기 가능
+    ```java
+    fin.read(b); // 배열 b의 바이트 크기만큼 바이너리 그대로 읽기
+    ```
+4. 스트림 닫기
+    - close()로 스트림 닫기
+
+### File 클래스
+1. File 클래스
+    - 파일의 경로명 및 속성을 다루는 클래스
+        - java.io.File
+        - 파일과 디렉터리 경로명의 추상적 표현
+    - 파일 이름 변경, 삭제, 디렉터리 생성, 크기 등 파일 관리
+    - File 객체에는 파일 읽기/쓰기 기능 없음
+        - 파일 입출력은 파일 입출력 스트림 이용
+2. File 객체 생성
+    - 생성자에 파일 경로명을 주어 File 객체 생성
+    ```java
+    File f = new File("c:\\Temp\\test.txt");
+    ```
+    - 디렉터리와 파일명을 나누어 생성자 호출
+    ```java
+    File f = new File("c:\\Temp", "test.txt");
+    ```
+### File 클래스 활용
+1. 파일 크기
+    ```java
+    long size = f.length();
+    ```
+2. 파일 경로명
+    ```java
+    File f = new File("c:\\windows\\system.ini");
+    String filename = f.getName(); // "system.ini"
+    String path = f.getPath(); // "c:\\windows\\system.ini"
+    String parent = f.getParent(); // "c:\\windows"
+    ```
+3. 디렉터리 파일 리스트 얻기
+    ```java
+    if(f.isFile())
+        System.out.println(f.getPath() + "는 파일입니다."); // 파일
+    else if(f.isDirectory())
+        System.out.println(f.getPath() + "는 디렉터리입니다."); // 디렉터리
+    ```
+4. 파일 타입
+    ```java
+    File f = new File("c:\\Temp");
+    File[] subfiles = f.listFiles(); // c:\Temp의 파일 및 서브 디렉터리 리스트 얻기
+
+    for(int i=0; i<filenames.length; i++) {
+        System.out.print(subfiles[i].getName()); // 서브 파일명 출력
+        System.out.println("\t파일 크기: " + subfiles[i].length()); //서브파일크기출력
+    }
+    ```
+
+## 14장 자바 소켓 프로그래밍
+### TCP/IP 소개
+1. TCP/IP 프로토콜
+    - 두 시스템 간에 데이터가 손상없이 안전하게 전송되도록 하는 통신 프로토콜
+    - TCP에서 동작하는 응용프로그램 사례
+        - e-mail, FTP, 웹(HTTP) 등
+2. TCP/IP 특징
+    - 연결형 통신
+        - 한 번 연결 후 계속 데이터 전송 가능
+    - 보낸 순서대로 받아 응용프로그램에게 전달
+
+### IP 주소
+1. IP 주소
+    - 네트워크 상에서 유일하게 식별될 수 있는 컴퓨터 주소
+        - 숫자로 구성된 주소
+        - 4개의 숫자가 ‘.’으로 연결
+            - 예) 192.156.11.15
+    - 숫자로 된 주소는 기억하기 어려우므로 www.naver.com과 같은 문자열로 구성된 도메인 이름으로 바꿔 사용
+        - DNS(Domain Name System)
+            - 문자열로 구성된 도메인 이름을 숫자로 구성된 IP 주소로 자동 변환
+    - 현재는 32비트의 IP 버전 4(IPv4)가 사용되고 있음
+        - IP 주소 고갈로 인해 128비트의 IP 버전 6(IPv6)이 점점 사용되는 추세
+    - 자신의 IP 주소를 간단히 localhost라는 이름으로 사용 가능
 
 
 
